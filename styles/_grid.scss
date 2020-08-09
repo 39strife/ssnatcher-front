@@ -1,0 +1,53 @@
+@for $i from 0 through 10 {
+  .m-r-#{$i} {
+    margin-right: #{$i / 2}rem;
+  }
+  .m-l-#{$i} {
+    margin-left: #{$i / 2}rem;
+  }
+  .m-t-#{$i} {
+    margin-top: #{$i / 2}rem;
+  }
+  .m-b-#{$i} {
+    margin-bottom: #{$i / 2}rem;
+  }
+  .m-x-#{$i} {
+    margin: 0 #{$i / 2}rem;
+  }
+  .m-y-#{$i} {
+    margin: #{$i / 2}rem 0;
+  }
+  .p-r-#{$i} {
+    padding-right: #{$i / 2}rem;
+  }
+  .p-l-#{$i} {
+    padding-left: #{$i / 2}rem;
+  }
+  .p-t-#{$i} {
+    padding-top: #{$i / 2}rem;
+  }
+  .p-b-#{$i} {
+    padding-bottom: #{$i / 2}rem;
+  }
+  .p-x-#{$i} {
+    padding: 0 #{$i / 2}rem;
+  }
+  .p-y-#{$i} {
+    padding: #{$i / 2}rem 0;
+  }
+}
+
+.m-x-auto {
+  margin: 0 auto;
+}
+.m-y-auto {
+  margin: auto 0;
+}
+
+@function transition($args) {
+  $return: "";
+  @each $arg in $args {
+    $return: #{$return + ",transition 0.5s ease-in-out"};
+  }
+  @return $return;
+}
