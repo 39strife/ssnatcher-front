@@ -1,5 +1,6 @@
 import React from "react";
 import { MagnifyingGlass, Profile } from "../../styles/icons";
+import NavSidebar from "./NavSidebar";
 
 export default function Nav() {
   return (
@@ -19,13 +20,13 @@ export default function Nav() {
             <MagnifyingGlass />
             <input type="text" />
           </div>
-          <div className="profile">
+          <div className="profile m-l-2">
             <button>
               <Profile />{" "}
             </button>
           </div>
-          <div className="burge">
-            <button></button>
+          <div className="burger m-l-2">
+            <NavSidebar />
           </div>
         </div>
       </div>

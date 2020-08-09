@@ -110,3 +110,33 @@ export function MagnifyingGlass() {
     </svg>
   );
 }
+export function ExitIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="31"
+      height="25"
+      fill="none"
+      viewBox="0 0 31 25"
+    >
+      <rect
+        width="31"
+        height="2"
+        x="25.753"
+        y="24.667"
+        fill="#fff"
+        rx="1"
+        transform="rotate(-135 25.753 24.667)"
+      ></rect>
+      <rect
+        width="31"
+        height="2"
+        x="4"
+        y="22.92"
+        fill="#fff"
+        rx="1"
+        transform="rotate(-45 4 22.92)"
+      ></rect>
+    </svg>
+  );
+}

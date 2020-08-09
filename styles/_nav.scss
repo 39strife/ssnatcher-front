@@ -22,6 +22,19 @@ nav {
   @include align-center-flex;
   justify-content: space-between;
   padding: 1rem;
+  .sides {
+    @include align-center-flex;
+    button {
+      padding: 1rem;
+      transition: transition((backgrop-filter, background));
+      border-radius: $borderRadius;
+
+      &:hover {
+        background: rgba($white, 0.1);
+        backdrop-filter: $blur;
+      }
+    }
+  }
   .brand {
     @include align-center-flex;
     &-logo {
@@ -52,6 +65,54 @@ nav {
       transform: translate(0, -50%);
       z-index: 10;
       right: 1rem;
+    }
+  }
+  .menu {
+    &-sidebar {
+      display: none;
+      &.open {
+        display: block;
+      }
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 100%;
+      max-width: 400px;
+      height: 100vh;
+      background: $dark;
+      z-index: 10;
+      padding: 2rem;
+    }
+    &-inner {
+      .single-menu {
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          li {
+            border-bottom: 1px solid rgba($white, 0.1);
+            margin: 0;
+            a {
+              width: 100%;
+              height: 100%;
+              padding: 0.5rem;
+              transition: transition((background, padding-left));
+              display: block;
+              &:hover {
+                background-color: rgba($white, 0.1);
+                padding-left: 2rem;
+              }
+            }
+            &:last-child {
+              border-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+    &-top {
+      @include align-center-flex;
+      justify-content: space-between;
     }
   }
 }
