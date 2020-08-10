@@ -21,7 +21,8 @@
     img {
       display: flex;
       max-width: 67%;
-      height: 100%;
+      max-height: 100%;
+      height: auto;
       width: auto;
     }
   }
@@ -56,6 +57,11 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      @include for-phone {
+        width: 100%;
+        background: rgba($dark, 0.2);
+        border-radius: $borderRadius;
+      }
       p {
         padding-left: 3rem;
       }
@@ -81,6 +87,9 @@
         // letter-spacing: -0.06em;
         text-transform: uppercase;
         width: max-content;
+        @include for-phone {
+          width: 100%;
+        }
       }
     }
   }

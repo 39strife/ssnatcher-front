@@ -85,6 +85,22 @@ $sm: 512px;
 $md: 728px;
 $lg: 1100px;
 
+@mixin for-phone {
+  @media screen and (max-width: $sm) {
+    @content;
+  }
+}
+@mixin for-tablet {
+  @media screen and (max-width: $md) {
+    @content;
+  }
+}
+@mixin for-laptop {
+  @media screen and (max-width: $md) {
+    @content;
+  }
+}
+
 $viewport-layouts: (
   "xs": $xs,
   "sm": $sm,
