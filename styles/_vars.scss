@@ -6,7 +6,7 @@ $darkRed: #bd1941;
 $red: #f6406c;
 $borderRadius: 10px;
 $blur: blur(20px);
-
+$boxWidth: 1400px;
 @mixin align-center-flex {
   display: flex;
   align-items: center;

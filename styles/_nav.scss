@@ -52,12 +52,16 @@ nav {
     input {
       -webkit-appearance: none;
       outline: none;
-      background: rgba($white, 0.1);
+      background: rgba($white, 0.05);
       border: 0;
       padding: 0.5rem 1rem;
       border-radius: $borderRadius;
       color: white;
-      backdrop-filter: $blur;
+      transition: transition((background, backdrop-filter));
+      &:focus {
+        backdrop-filter: $blur;
+        background: rgba($white, 0.1);
+      }
     }
     svg {
       position: absolute;
@@ -79,7 +83,8 @@ nav {
       width: 100%;
       max-width: 400px;
       height: 100vh;
-      background: $dark;
+      background: rgba($dark, 0.5);
+      backdrop-filter: $blur;
       z-index: 10;
       padding: 2rem;
     }
@@ -97,7 +102,15 @@ nav {
               height: 100%;
               padding: 0.5rem;
               transition: transition((background, padding-left));
-              display: block;
+              display: flex;
+              @include align-center-flex;
+              &:active {
+                filter: brightness(0.8);
+              }
+              .icon {
+                display: flex;
+                margin-right: 1rem;
+              }
               &:hover {
                 background-color: rgba($white, 0.1);
                 padding-left: 2rem;

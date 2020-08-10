@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Burger, ExitIcon } from "../../styles/icons";
+import {
+  Burger,
+  ExitIcon,
+  Enter,
+  CheckMark,
+  GameIcon,
+  LinkIcon,
+} from "../../styles/icons";
 import { makeClasses } from "../../lib/helpers";
 import { useSpring, a } from "react-spring";
 
@@ -29,25 +36,81 @@ export default function NavSidebar() {
         </div>
         <div className="menu-inner">
           <div className="single-menu">
-            <h3>Menu 1</h3>
+            <h3>Menu</h3>
             <ul>
               <li>
-                <a href="#">Link</a>
+                <a href="#">
+                  <span className="icon">
+                    <LinkIcon />
+                  </span>
+                  Home
+                </a>
               </li>
               <li>
-                <a href="#">Link</a>
+                <a href="#">
+                  <span className="icon">
+                    <LinkIcon />
+                  </span>
+                  About
+                </a>
               </li>
               <li>
-                <a href="#">Link</a>
+                <a href="#">
+                  <span className="icon">
+                    <LinkIcon />
+                  </span>
+                  Blog
+                </a>
               </li>
               <li>
-                <a href="#">Link</a>
+                <a href="#">
+                  <span className="icon">
+                    <LinkIcon />
+                  </span>
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="single-menu">
+            <h3>Games</h3>
+            <ul>
+              <li>
+                <a href="#">
+                  <span className="icon">
+                    <GameIcon />
+                  </span>
+                  Tekken
+                </a>
               </li>
               <li>
-                <a href="#">Link</a>
+                <a href="#">
+                  <span className="icon">
+                    <GameIcon />
+                  </span>
+                  Street Fighter V
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="single-menu">
+            <h3>Account</h3>
+            <ul>
+              <li>
+                <a href="#">
+                  <span className="icon">
+                    <Enter />
+                  </span>
+                  Login
+                </a>
               </li>
               <li>
-                <a href="#">Link</a>
+                <a href="#">
+                  <span className="icon">
+                    <CheckMark />
+                  </span>
+                  Register
+                </a>
               </li>
             </ul>
           </div>

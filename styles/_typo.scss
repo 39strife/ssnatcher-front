@@ -1,0 +1,24 @@
+@for $var from 1 to 6 {
+  h#{$var} {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+h1 {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 96px;
+  /* identical to box height */
+
+  letter-spacing: -0.035em;
+}
+
+p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 250%;
+}

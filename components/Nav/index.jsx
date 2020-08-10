@@ -18,7 +18,7 @@ export default function Nav() {
         <div className="sides">
           <div className="search">
             <MagnifyingGlass />
-            <input type="text" />
+            <input type="text" placeholder="Search..." />
           </div>
           <div className="profile m-l-2">
             <button>
