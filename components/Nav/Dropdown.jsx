@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useSpring, a } from "react-spring";
+import useOutside from "../../lib/hooks/useOutside";
 
 export default function Dropdown({
   children,
@@ -10,6 +11,7 @@ export default function Dropdown({
   }
   const Elem = children;
   const [open, setOpen] = useState(false);
+  const elemRef = useRef(0);
   const style = useSpring({
     to: async (next, cancel) => {
       if (open) {
@@ -19,18 +21,19 @@ export default function Dropdown({
           display: "block",
         });
       } else {
-        await next({ opacity: 0, transform: "translate(0%,100%)" });
+        await next({ opacity: 0, transform: "translate(0%,50%)" });
         await next({ display: "none" });
       }
     },
   });
+  useOutside(elemRef, () => open && setOpen(false));
   return (
-    <div className="dropdown">
+    <div className="dropdown" ref={elemRef}>
       <Elem onClick={() => setOpen(!open)} />
       <a.ul className="dropdown-menu" style={style}>
         {links.map(({ label, props, icon: Icon }, i) => {
           return (
-            <li>
+            <li key={i + "dropdown"}>
               <button {...props}>
                 <span className="icon">
                   <Icon />
