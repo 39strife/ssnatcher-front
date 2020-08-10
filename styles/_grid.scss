@@ -1,15 +1,15 @@
 @for $i from 0 through 10 {
   .m-r-#{$i} {
-    margin-right: #{$i / 2}rem;
+    margin-right: #{$i / 2}rem !important;
   }
   .m-l-#{$i} {
-    margin-left: #{$i / 2}rem;
+    margin-left: #{$i / 2}rem !important;
   }
   .m-t-#{$i} {
-    margin-top: #{$i / 2}rem;
+    margin-top: #{$i / 2}rem !important;
   }
   .m-b-#{$i} {
-    margin-bottom: #{$i / 2}rem;
+    margin-bottom: #{$i / 2}rem !important;
   }
   .m-x-#{$i} {
     margin: 0 #{$i / 2}rem;
@@ -18,16 +18,16 @@
     margin: #{$i / 2}rem 0;
   }
   .p-r-#{$i} {
-    padding-right: #{$i / 2}rem;
+    padding-right: #{$i / 2}rem !important;
   }
   .p-l-#{$i} {
-    padding-left: #{$i / 2}rem;
+    padding-left: #{$i / 2}rem !important;
   }
   .p-t-#{$i} {
-    padding-top: #{$i / 2}rem;
+    padding-top: #{$i / 2}rem !important;
   }
   .p-b-#{$i} {
-    padding-bottom: #{$i / 2}rem;
+    padding-bottom: #{$i / 2}rem !important;
   }
   .p-x-#{$i} {
     padding: 0 #{$i / 2}rem;
@@ -78,6 +78,9 @@
 
 .text-right {
   text-align: right;
+}
+.text-center {
+  text-align: center;
 }
 
 $xs: 326px;
@@ -136,7 +139,6 @@ $singleWidth: percent(12);
 @each $name, $point in $viewport-layouts {
   @for $i from 0 through $columns {
     $width: percentage($i/$columns);
-    @debug "width: " + $width;
     .col-#{$name}-#{$i} {
       display: block;
       width: 100%;
