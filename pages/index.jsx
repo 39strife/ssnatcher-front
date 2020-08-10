@@ -1,5 +1,24 @@
 import Head from "next/head";
 import Layout from "../lib/Layout";
+import CardWithImage from "../components/CardWithImage";
+
+const cards = [
+  {
+    image: "/static/images/jin.png",
+    title: "Tekken 7",
+    description:
+      "Tekken 7 is a fighting game developed and published by Bandai Namco Entertainment. It is the ninth overall installment in the Tekken series. Tekken 7 had a limited arcade release in March 2015.",
+    link: "#",
+    red: true,
+  },
+  {
+    image: "/static/images/ryu.png",
+    title: "Street Fighter V",
+    description:
+      "Tekken 7 is a fighting game developed and published by Bandai Namco Entertainment. It is the ninth overall installment in the Tekken series.",
+    link: "#",
+  },
+];
 
 export default function Home() {
   return (
@@ -51,52 +70,9 @@ export default function Home() {
         </div>
         <div className="wrapper m-t-10 card-parent">
           <div className="row">
-            {/* <div className="col-lg-6 m-t-5">
-              <div className="card red">
-                <div className="card-body">
-                  <div className="card-image">
-                    <img src="/static/images/jin.png" />
-                  </div>
-                  <div className="card-body_inner">
-                    <div>
-                      <h3>TEKKEN 7</h3>
-                      <p>
-                        Tekken 7 is a fighting game developed and published by
-                        Bandai Namco Entertainment. It is the ninth overall
-                        installment in the Tekken series. Tekken 7 had a limited
-                        arcade release in March 2015.
-                      </p>
-                    </div>
-                    <a href="#" className="btn">
-                      Learn More
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-6 m-t-5">
-              <div className="card">
-                <div className="card-body right">
-                  <div className="card-image">
-                    <img src="/static/images/ryu.png" />
-                  </div>
-                  <div className="card-body_inner">
-                    <div>
-                      <h3>TEKKEN 7</h3>
-                      <p>
-                        Tekken 7 is a fighting game developed and published by
-                        Bandai Namco Entertainment. It is the ninth overall
-                        installment in the Tekken series.
-                      </p>
-                    </div>
-                    <a href="#" className="btn">
-                      Learn More
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-           */}
+            {cards.map((e, i) => (
+              <CardWithImage right={i % 2} {...e} key={i + "homeCard"} />
+            ))}
           </div>
         </div>
       </section>
