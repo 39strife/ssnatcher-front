@@ -51,7 +51,7 @@ export default function Home() {
         </div>
         <div className="wrapper m-t-10 card-parent">
           <div className="row">
-            <div className="col-lg-6 m-t-5">
+            {/* <div className="col-lg-6 m-t-5">
               <div className="card red">
                 <div className="card-body">
                   <div className="card-image">
@@ -96,6 +96,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
+           */}
           </div>
         </div>
       </section>
