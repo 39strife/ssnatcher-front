@@ -104,6 +104,7 @@ export default function Home() {
             {posts.map((e, i) => (
               <SinglePost {...e} key={i + "homeCard"} />
             ))}
+            <SinglePost viewAll />
           </div>
         </div>
       </section>

@@ -1,6 +1,27 @@
 import React from "react";
 
-export default function SinglePost({ title, image, description }) {
+export default function SinglePost({
+  title,
+  image,
+  description,
+  viewAll = false,
+}) {
+  if (viewAll) {
+    return (
+      <div className="col-md-3">
+        <div className="card-post">
+          <div className="card-post_thumb">
+            <img src="/static/images/king.png" alt="" />
+            <div className="card-post_thumb_inner">
+              <div className="card-post_thumb__inner">
+                <h3>VIEW ALL</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="col-md-3">
       <div className="card-post">
