@@ -25,6 +25,7 @@ export default function Dropdown({
         await next({ display: "none" });
       }
     },
+    from: { opacity: 0, transform: "translate(0%,50%)", display: "none" },
   });
   useOutside(elemRef, () => open && setOpen(false));
   return (
