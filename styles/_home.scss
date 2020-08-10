@@ -4,6 +4,9 @@
   overflow: hidden;
   border-radius: $borderRadius;
   height: 100%;
+  @include for-phone {
+    padding-top: 1rem;
+  }
   &.red {
     .card-body {
       background: linear-gradient(to top right, $darkRed, $red);

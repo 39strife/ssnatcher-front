@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { MagnifyingGlass, Profile, Enter, CheckMark } from "../../styles/icons";
 import NavSidebar from "./NavSidebar";
 import Dropdown from "./Dropdown";
 import { useModalContext } from "../../lib/globals/ModalContext";
+import { makeClasses } from "../../lib/helpers";
 
 export default function Nav() {
   const { setLogin, setRegister } = useModalContext();
+  const [focus, setFocus] = useState(false);
   return (
     <nav>
       <div className="background"></div>
@@ -18,10 +20,15 @@ export default function Nav() {
             <h4>String Snatcher</h4>
           </div>
         </div>
-        <div className="sides">
+        <div className={makeClasses("sides", focus && "focused")}>
           <div className="search">
             <MagnifyingGlass />
-            <input type="text" placeholder="Search..." />
+            <input
+              onFocus={() => setFocus(true)}
+              onBlur={() => setFocus(false)}
+              type="text"
+              placeholder="Search..."
+            />
           </div>
           <div className="profile m-l-2">
             <Dropdown

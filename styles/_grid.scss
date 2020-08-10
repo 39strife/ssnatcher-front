@@ -140,6 +140,9 @@ $singleWidth: percent(12);
     .col-#{$name}-#{$i} {
       display: block;
       width: 100%;
+      margin-bottom: $gutter-width;
+      padding-right: $half-gutter-width;
+      padding-left: $half-gutter-width;
     }
     @media screen and (min-width: $point) {
       .col-#{$name}-#{$i} {

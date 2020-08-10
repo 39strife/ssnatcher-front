@@ -15,6 +15,14 @@ nav {
       rgba(black, 0.5),
       rgba(black, 0)
     );
+    @include for-phone {
+      height: 300%;
+      background-image: linear-gradient(
+        to bottom,
+        rgba(black, 0.8),
+        rgba(black, 0)
+      );
+    }
   }
 }
 
@@ -24,11 +32,23 @@ nav {
   padding: 1rem;
   .sides {
     @include align-center-flex;
+    @include for-phone {
+      flex-wrap: wrap;
+    }
+    &.focused {
+      @include for-phone {
+        > div:not(.search) {
+          display: none;
+        }
+      }
+    }
     button {
       padding: 1rem;
       transition: transition((backgrop-filter, background));
       border-radius: $borderRadius;
-
+      @include for-phone {
+        padding: 0.5rem;
+      }
       &:hover {
         background: rgba($white, 0.1);
         backdrop-filter: $blur;
@@ -46,26 +66,41 @@ nav {
         height: 50px;
       }
     }
+    &-text {
+      @include for-tablet {
+        display: none;
+      }
+    }
   }
   .search {
     position: relative;
     input {
+      &::placeholder {
+        color: rgba($white, 0.1);
+      }
       -webkit-appearance: none;
       outline: none;
       background: rgba($white, 0.05);
       border: 0;
       padding: 0.5rem 1rem;
+      width: 3.25rem;
       border-radius: $borderRadius;
       color: white;
-      transition: transition((background, backdrop-filter));
+      transition: transition((background, backdrop-filter, width));
+      @include for-phone {
+        transition: transition((background, backdrop-filter)), width 0s;
+      }
       &:focus {
         backdrop-filter: $blur;
         background: rgba($white, 0.1);
+        width: 15rem;
+        max-width: 100%;
       }
     }
     svg {
       position: absolute;
       top: 50%;
+      pointer-events: none;
       transform: translate(0, -50%);
       z-index: 10;
       right: 1rem;
