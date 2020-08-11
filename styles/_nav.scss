@@ -109,6 +109,9 @@ nav {
   .menu {
     &-sidebar {
       display: none;
+      a {
+        color: white;
+      }
       &.open {
         display: block;
       }

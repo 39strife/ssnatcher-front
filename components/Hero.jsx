@@ -1,6 +1,8 @@
 import React from "react";
+import { useModalContext } from "../lib/globals/ModalContext";
 
 export default function Hero() {
+  const { setLogin, setRegister } = useModalContext();
   return (
     <div className="hero">
       <img src="/static/images/hero.png" alt="" />
@@ -25,10 +27,14 @@ export default function Hero() {
             <div className="col-md-6">
               <div className="row">
                 <div className="col-md-6">
-                  <button className="btn">Login</button>
+                  <button className="btn" onClick={() => setLogin(true)}>
+                    Login
+                  </button>
                 </div>
                 <div className="col-md-6">
-                  <button className="btn">Sign Up</button>
+                  <button className="btn" onClick={() => setRegister(true)}>
+                    Sign Up
+                  </button>
                 </div>
               </div>
             </div>

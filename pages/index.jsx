@@ -99,7 +99,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="wrapper m-t-10">
+        <div className="wrapper">
           <div className="row">
             {posts.map((e, i) => (
               <SinglePost {...e} key={i + "homeCard"} />

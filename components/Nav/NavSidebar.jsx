@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Burger,
   ExitIcon,
@@ -9,9 +9,12 @@ import {
 } from "../../styles/icons";
 import { makeClasses } from "../../lib/helpers";
 import { useSpring, a } from "react-spring";
+import useOutside from "../../lib/hooks/useOutside";
+import { useModalContext } from "../../lib/globals/ModalContext";
 
 export default function NavSidebar() {
   const [open, setOpen] = useState(false);
+  const { setLogin, setRegister } = useModalContext();
   const spring = useSpring({
     to: async (next, cancel) => {
       if (open) {
@@ -22,12 +25,14 @@ export default function NavSidebar() {
       }
     },
   });
+  const sidebarRef = useRef();
+  useOutside(sidebarRef, () => open && setOpen(false));
   return (
     <>
       <button onClick={() => setOpen(!open)}>
         <Burger />
       </button>
-      <a.div className="menu-sidebar" style={spring}>
+      <a.div className="menu-sidebar" ref={sidebarRef} style={spring}>
         <div className="menu-top">
           <span></span>
           <button onClick={() => setOpen(!open)}>
@@ -97,7 +102,10 @@ export default function NavSidebar() {
             <h3>Account</h3>
             <ul>
               <li>
-                <a href="#">
+                <a
+                  href="#"
+                  onClick={(e) => (e.preventDefault(), setLogin(true))}
+                >
                   <span className="icon">
                     <Enter />
                   </span>
@@ -105,7 +113,10 @@ export default function NavSidebar() {
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a
+                  href="#"
+                  onClick={(e) => (e.preventDefault(), setRegister(true))}
+                >
                   <span className="icon">
                     <CheckMark />
                   </span>
