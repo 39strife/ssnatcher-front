@@ -135,3 +135,104 @@ a {
     margin: 0 !important;
   }
 }
+
+footer {
+  padding-top: 5rem;
+  form {
+    margin-top: 1rem;
+    border-radius: $borderRadius;
+    overflow: hidden;
+    .form-group {
+      margin: 0;
+      button {
+        background: linear-gradient(to top right, $darkBlue, $blue);
+        transition: transition(filter);
+        border-bottom-left-radius: $borderRadius !important;
+        border-bottom-right-radius: $borderRadius !important;
+        &:hover {
+          background: linear-gradient(to top right, $darkBlue, $blue);
+          border: 0;
+          box-shadow: 0 0 0 !important;
+          filter: brightness(1.1);
+        }
+      }
+      input,
+      button {
+        border-radius: 0;
+        border: 0;
+        margin: 0 !important;
+        &:focus {
+          box-shadow: 0 0 0 !important;
+        }
+      }
+    }
+  }
+  .b-t-1 {
+    border-top: 1px solid rgba(white, 0.1);
+    padding-top: 2rem;
+    ul {
+      list-style-type: none;
+      margin: 1rem 0;
+      padding: 0;
+      display: flex;
+      flex-flow: wrap;
+      &.socials {
+        li {
+          flex: 1 1 20%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        svg {
+          width: 100%;
+          max-width: 30px;
+          height: auto;
+
+          path {
+            transition: transition(fill);
+            fill: white;
+          }
+        }
+        a {
+          &:hover {
+            background: none;
+            svg path {
+              fill: $blue;
+            }
+          }
+        }
+      }
+      li {
+        flex: 0 0 33%;
+
+        a {
+          position: relative;
+          &:hover {
+            background-color: rgba(white, 0.05);
+          }
+          display: flex;
+          color: white;
+          transition: transition(background-color);
+          padding: 1rem;
+        }
+      }
+    }
+    h3 {
+      margin-top: 0;
+      font-size: 500 !important;
+    }
+    p {
+      font-size: 16px;
+      line-height: 150%;
+      opacity: 1;
+      font-weight: 300 !important;
+    }
+  }
+  .copyright {
+    p {
+      opacity: 0.2;
+      font-size: 14px;
+      margin: 0 0;
+    }
+  }
+}

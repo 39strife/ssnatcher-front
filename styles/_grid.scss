@@ -125,6 +125,9 @@ $singleWidth: percent(12);
   max-width: 1400px;
   margin: 0 auto;
   width: 90%;
+  &-fluid {
+    max-width: unset;
+  }
 }
 
 .row {
