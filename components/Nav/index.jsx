@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { MagnifyingGlass, Profile, Enter, CheckMark } from "../../styles/icons";
 import NavSidebar from "./NavSidebar";
 import Dropdown from "./Dropdown";
@@ -8,6 +8,7 @@ import Link from "next/link";
 export default function Nav() {
   const { setLogin, setRegister } = useModalContext();
   const [focus, setFocus] = useState(false);
+  const searchRef = useRef();
   return (
     <nav>
       <div className="background"></div>
@@ -26,8 +27,13 @@ export default function Nav() {
           <div className="search">
             <MagnifyingGlass />
             <input
+              ref={searchRef}
               onFocus={() => setFocus(true)}
-              onBlur={() => setFocus(false)}
+              onBlur={() => {
+                setFocus(false);
+                console.log(searchRef.current);
+                searchRef.current.value = "";
+              }}
               type="text"
               placeholder="Search..."
             />
