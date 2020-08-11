@@ -116,3 +116,22 @@ a {
     color: $red;
   }
 }
+
+.cookie-policy {
+  position: fixed;
+  bottom: 0;
+  z-index: 20;
+  background: url("/static/images/cookiebg.jpg");
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  padding: 1rem 0;
+
+  .col-md-10,
+  .col-md-2 {
+    margin-bottom: 0;
+  }
+  p {
+    margin: 0 !important;
+  }
+}

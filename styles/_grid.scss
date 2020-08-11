@@ -55,6 +55,7 @@
 .btn {
   @include align-center-flex;
   background: rgba($white, 0.1);
+  color: white;
   text-align: center;
   justify-content: center;
   width: 100%;
@@ -73,6 +74,7 @@
   &:hover {
     box-shadow: 0 0 0 1px rgba($white, 0.4);
     background: rgba($white, 0.2);
+    color: white;
   }
 }
 
@@ -134,6 +136,9 @@ $singleWidth: percent(12);
   flex-wrap: wrap;
   margin-right: $gutter-compensation;
   margin-left: $gutter-compensation;
+  &.align-center {
+    align-items: center;
+  }
 }
 
 @each $name, $point in $viewport-layouts {

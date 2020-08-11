@@ -4,7 +4,7 @@ import NavSidebar from "./NavSidebar";
 import Dropdown from "./Dropdown";
 import { useModalContext } from "../../lib/globals/ModalContext";
 import { makeClasses } from "../../lib/helpers";
-
+import Link from "next/link";
 export default function Nav() {
   const { setLogin, setRegister } = useModalContext();
   const [focus, setFocus] = useState(false);
@@ -12,14 +12,16 @@ export default function Nav() {
     <nav>
       <div className="background"></div>
       <div className="nav">
-        <div className="brand">
-          <div className="brand-logo">
-            <img src="" />
-          </div>
-          <div className="brand-text">
-            <h4>String Snatcher</h4>
-          </div>
-        </div>
+        <Link href="/">
+          <a className="brand">
+            <div className="brand-logo">
+              <img src="" />
+            </div>
+            <div className="brand-text">
+              <h4>String Snatcher</h4>
+            </div>
+          </a>
+        </Link>
         <div className={makeClasses("sides", focus && "focused")}>
           <div className="search">
             <MagnifyingGlass />

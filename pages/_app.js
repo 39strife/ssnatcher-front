@@ -1,5 +1,6 @@
 import "../styles/index.scss";
 import { ModalProvider } from "../lib/globals/ModalContext";
+import CookieAlert from "../components/CookiePolicy";
 
 const Providers = ({ children }) => {
   return <ModalProvider>{children}</ModalProvider>;
@@ -8,6 +9,7 @@ const Providers = ({ children }) => {
 function MyApp({ Component, pageProps }) {
   return (
     <Providers>
+      <CookieAlert />
       <Component {...pageProps} />
     </Providers>
   );
