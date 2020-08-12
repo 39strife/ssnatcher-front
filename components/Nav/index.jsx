@@ -3,12 +3,15 @@ import { MagnifyingGlass, Profile, Enter, CheckMark } from "../../styles/icons";
 import NavSidebar from "./NavSidebar";
 import Dropdown from "./Dropdown";
 import { useModalContext } from "../../lib/globals/ModalContext";
-import { makeClasses } from "../../lib/helpers";
+import { makeClasses, formEventTOJSON } from "../../lib/helpers";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 export default function Nav() {
   const { setLogin, setRegister } = useModalContext();
   const [focus, setFocus] = useState(false);
   const searchRef = useRef();
+  const router = useRouter();
   return (
     <nav>
       <div className="background"></div>
@@ -26,17 +29,27 @@ export default function Nav() {
         <div className={makeClasses("sides", focus && "focused")}>
           <div className="search">
             <MagnifyingGlass />
-            <input
-              ref={searchRef}
-              onFocus={() => setFocus(true)}
-              onBlur={() => {
-                setFocus(false);
-                console.log(searchRef.current);
-                searchRef.current.value = "";
+            <form
+              onSubmit={(e) => {
+                const values = formEventTOJSON(e);
+                router.push(
+                  "/search/[slug]",
+                  `/search/${encodeURI(values.search)}`
+                );
               }}
-              type="text"
-              placeholder="Search..."
-            />
+            >
+              <input
+                name="search"
+                ref={searchRef}
+                onFocus={() => setFocus(true)}
+                onBlur={() => {
+                  setFocus(false);
+                  searchRef.current.value = "";
+                }}
+                type="text"
+                placeholder="Search..."
+              />
+            </form>
           </div>
           <div className="profile m-l-2">
             <Dropdown
