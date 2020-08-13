@@ -1,23 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../../lib/Layout";
 import Loading from "../../components/Loading";
-import { postData } from "../../lib/hooks/useRequest";
-export default function VerificationPage({ slug }) {
-  console.log(slug);
-  const [{ loading, status, message }, setLoading] = useState({
-    loading: false,
-    status: false,
-    message: "",
-  });
-  const useRequest = async () => {
-    const result = await postData();
-  };
+import { useRequest, apiRoutes } from "../../lib/hooks/useRequest";
+import { useModalContext } from "../../lib/globals/ModalContext";
+export default function VerificationPage({ token }) {
+  const [submit, { loading, message }] = useRequest();
+  const { setLogin } = useModalContext();
+  useEffect(() => {
+    submit(apiRoutes.auth.authenticate, { token });
+  }, []);
   return (
     <Layout>
       <div className="full-height centered">
         <div className="wrapper">
-          <Loading loading message={"We are verifying your email"}>
-            <h1>Your email has been verified</h1>
+          <Loading loading={loading} message={"We are verifying your email"}>
+            <h2>{message}</h2>
+            <div className="row m-t-5">
+              <div className="col-md-4">
+                <button onClick={() => setLogin(true)} className="btn">
+                  Log in
+                </button>
+              </div>
+            </div>
           </Loading>
         </div>
       </div>
@@ -26,5 +30,5 @@ export default function VerificationPage({ slug }) {
 }
 
 VerificationPage.getInitialProps = async ({ query }) => {
-  return { slug: query.slug };
+  return { token: query.slug };
 };
