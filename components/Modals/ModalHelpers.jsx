@@ -1,16 +1,32 @@
 import React from "react";
 import { makeClasses } from "../../lib/helpers";
 
-export const Input = ({ errors, name, placeholder, type, label }) => {
-  const error = errors[name] || [];
+export const Input = ({
+  errors = {},
+  name = "",
+  placeholder = "",
+  type = "text",
+  label = "",
+  readOnly = Boolean,
+  value = "",
+}) => {
+  let error = (() => {
+    try {
+      return errors[name] || [];
+    } catch {
+      return [];
+    }
+  })();
   const hasError = Boolean(error.length);
   return (
     <div className={makeClasses("form-group", hasError && "has-error")}>
       <label htmlFor={name}>{label}</label>
       <input
+        defaultValue={value}
         autoComplete="off"
         id={name}
         type={type}
+        readOnly={readOnly}
         name={name}
         placeholder={placeholder}
       />

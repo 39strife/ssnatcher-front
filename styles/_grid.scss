@@ -125,6 +125,9 @@ $singleWidth: percent(12);
   max-width: 1400px;
   margin: 0 auto;
   width: 90%;
+  &-small {
+    max-width: 800px;
+  }
   &-fluid {
     max-width: unset;
   }
