@@ -6,12 +6,15 @@ import { useModalContext } from "../../lib/globals/ModalContext";
 import { makeClasses, formEventTOJSON } from "../../lib/helpers";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useAuth, useAuthActions } from "../../lib/globals/AuthContext";
 
 export default function Nav() {
   const { setLogin, setRegister } = useModalContext();
   const [focus, setFocus] = useState(false);
   const searchRef = useRef();
   const router = useRouter();
+  const { isAuthenticated, user } = useAuth();
+  const { logout } = useAuthActions();
   return (
     <nav>
       <div className="background"></div>
@@ -53,20 +56,40 @@ export default function Nav() {
           </div>
           <div className="profile m-l-2">
             <Dropdown
-              links={[
-                {
-                  label: "Login",
-                  props: {
-                    onClick: () => setLogin(true),
-                  },
-                  icon: Enter,
-                },
-                {
-                  label: "Register",
-                  props: { onClick: () => setRegister(true) },
-                  icon: CheckMark,
-                },
-              ]}
+              links={
+                isAuthenticated
+                  ? [
+                      {
+                        label: "Profile",
+                        href: "/profile/[slug]",
+                        as: "/profile/" + user?.username,
+                      },
+                      {
+                        label: "Settings",
+                        href: "/settings",
+                      },
+                      {
+                        label: "Log Out",
+                        props: {
+                          onClick: () => logout(),
+                        },
+                      },
+                    ]
+                  : [
+                      {
+                        label: "Login",
+                        props: {
+                          onClick: () => setLogin(true),
+                        },
+                        icon: Enter,
+                      },
+                      {
+                        label: "Register",
+                        props: { onClick: () => setRegister(true) },
+                        icon: CheckMark,
+                      },
+                    ]
+              }
             >
               {(props) => {
                 return (

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useSpring, a } from "react-spring";
 import useOutside from "../../lib/hooks/useOutside";
+import Link from "next/link";
 
 export default function Dropdown({
   children,
@@ -32,15 +33,23 @@ export default function Dropdown({
     <div className="dropdown" ref={elemRef}>
       <Elem onClick={() => setOpen(!open)} />
       <a.ul className="dropdown-menu" style={style}>
-        {links.map(({ label, props, icon: Icon }, i) => {
+        {links.map(({ label, props, icon: Icon, href, as }, i) => {
           return (
             <li key={i + "dropdown"}>
-              <button {...props}>
-                <span className="icon">
-                  <Icon />
-                </span>{" "}
-                {label}
-              </button>
+              {Boolean(href) ? (
+                <Link {...{ href, as }}>
+                  <a>{label}</a>
+                </Link>
+              ) : (
+                <button {...props}>
+                  {Boolean(Icon) && (
+                    <span className="icon">
+                      <Icon />
+                    </span>
+                  )}
+                  {label}
+                </button>
+              )}
             </li>
           );
         })}

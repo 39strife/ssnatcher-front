@@ -39,3 +39,22 @@
     transform: rotate(360deg);
   }
 }
+
+.Toastify {
+  &__close-button {
+    path {
+      fill: white;
+    }
+  }
+  &__progress-bar {
+    background: $blue;
+  }
+  &__toast {
+    border-radius: $borderRadius;
+    box-shadow: none;
+    font-family: "Poppins";
+    background: rgba($white, 0.1);
+    backdrop-filter: $blur;
+    color: white;
+  }
+}
