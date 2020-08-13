@@ -30,6 +30,8 @@ export const ModalLogin = () => {
           placeholder="y0uRpA55w0rD"
           name="password"
         />
+        <form.Message />
+
         <div className="form-group m-b-0">
           <button className="btn">Login</button>
         </div>

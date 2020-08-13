@@ -4,7 +4,6 @@ import { makeClasses } from "../../lib/helpers";
 export const Input = ({ errors, name, placeholder, type, label }) => {
   const error = errors[name] || [];
   const hasError = Boolean(error.length);
-  console.log(hasError, error);
   return (
     <div className={makeClasses("form-group", hasError && "has-error")}>
       <label htmlFor={name}>{label}</label>
@@ -29,7 +28,6 @@ export const Input = ({ errors, name, placeholder, type, label }) => {
 export const Consent = ({ errors }) => {
   const error = errors["consent"] || [];
   const hasError = Boolean(error.length);
-  console.log(hasError, error);
   return (
     <div className={makeClasses("form-group consent", hasError && "has-error")}>
       <label htmlFor="consent" className="checkbox">

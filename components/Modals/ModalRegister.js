@@ -41,6 +41,7 @@ export const ModalRegister = () => {
           placeholder="y0uRpA55w0rD (again)"
         />
         <Consent errors={form.errors} />
+        <form.Message />
         <div className="form-group m-b-0">
           <button className="btn">Register</button>
         </div>
