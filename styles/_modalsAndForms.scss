@@ -88,6 +88,7 @@
     border: 1px solid rgba(white, 0.1);
     transition: transition((box-shadow));
     color: white;
+    width: 100%;
     font-weight: 400;
     &:focus {
       box-shadow: 0 0 0 1px rgba($blue, 1);
@@ -136,6 +137,39 @@
       background-repeat: no-repeat;
       background-position: center center;
       background-image: url("data:image/svg+xml, %3Csvg width='20' height='16' viewBox='0 0 20 16' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M19.769 3.66014L8.30871 15.1179C8.00155 15.4238 7.50428 15.4238 7.19836 15.1179L0.229074 8.10404C-0.0768463 7.79688 -0.0768463 7.29774 0.229074 6.99244L1.8943 5.32846C2.20145 5.02192 2.69873 5.02192 3.00465 5.32846L7.75942 10.1148L16.9915 0.882089C17.2974 0.576169 17.7947 0.576169 18.1031 0.882089L19.7683 2.54855C20.0774 2.85509 20.0774 3.35422 19.769 3.66014Z' fill='white' /%3E%3C/svg%3E");
+    }
+  }
+}
+
+.ss-drop {
+  width: 100%;
+  min-height: 200px;
+  padding: 1rem;
+  border: 1px dashed rgba($white, 0.1);
+  transition: transition((border, background));
+  display: grid;
+  place-items: center;
+  border-radius: $borderRadius;
+  &_inner {
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+  &.over {
+    background: rgba($blue, 0.2);
+    border: 1px dashed rgba($white, 0.2);
+  }
+  &_preview {
+    width: 100%;
+    p {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
     }
   }
 }

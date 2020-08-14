@@ -186,7 +186,13 @@ footer {
       padding: 0;
       display: flex;
       flex-flow: wrap;
+      @include for-phone {
+        flex-flow: column;
+      }
       &.socials {
+        @include for-phone {
+          flex-flow: unset;
+        }
         li {
           flex: 1 1 20%;
           display: flex;

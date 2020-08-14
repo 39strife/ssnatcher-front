@@ -58,7 +58,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="col--lg-3">
+          <div className="col-lg-3">
             <h3>😳 Stalk us</h3>
             <ul className="socials">
               <li>

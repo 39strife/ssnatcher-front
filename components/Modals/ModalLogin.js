@@ -5,7 +5,7 @@ import { Input } from "./ModalHelpers";
 
 export const ModalLogin = () => {
   const { setRegister } = useModalContext();
-  const form = useForm(apiRoutes.auth.login);
+  const form = useForm({ endpoint: apiRoutes.auth.login });
   return (
     <>
       <form onSubmit={form.handleSubmit}>

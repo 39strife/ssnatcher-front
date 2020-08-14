@@ -5,7 +5,10 @@ import { Input, Consent } from "./ModalHelpers";
 
 export const ModalRegister = () => {
   const { setLogin } = useModalContext();
-  const form = useForm(apiRoutes.auth.register, true);
+  const form = useForm({
+    endpoint: apiRoutes.auth.register,
+    withConsent: true,
+  });
   return (
     <>
       <form onSubmit={form.handleSubmit}>

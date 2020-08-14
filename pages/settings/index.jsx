@@ -2,6 +2,10 @@ import React from "react";
 import Layout from "../../lib/Layout";
 import { ProtectedRoute, useAuth } from "../../lib/globals/AuthContext";
 import { Input } from "../../components/Modals/ModalHelpers";
+import {
+  SettingsMenu,
+  SettingsForm,
+} from "../../components/Settings/settingsHelpers";
 
 export default function SettingsPage() {
   const { user } = useAuth();
@@ -11,26 +15,18 @@ export default function SettingsPage() {
       <ProtectedRoute />
       <div className="wrapper p-t-10">
         <div className="row">
-          <div className="col-md-4">
-            <ul className="settings-menu">
-              <li>Account</li>
-              <li>Profile</li>
-            </ul>
-          </div>
-          <div className="col-md-8">
-            <div className="row">
-              <div className="col-md-12">
-                <h1>Settings</h1>
-                <p>A little update eh? 😏</p>
-              </div>
-            </div>
+          <SettingsMenu />
+          <SettingsForm
+            title="Settings"
+            description="A little update never hurt anybody ✨"
+          >
             <form>
               <div className="form-group">
                 <Input
                   name="username"
                   readOnly
                   label="Username"
-                  value={user.username}
+                  value={user?.username}
                 />
               </div>
               <div className="form-group">
@@ -64,7 +60,7 @@ export default function SettingsPage() {
                 </div>
               </div>
             </form>
-          </div>
+          </SettingsForm>
         </div>
       </div>
     </Layout>
