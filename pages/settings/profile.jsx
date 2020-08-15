@@ -5,7 +5,11 @@ import {
   SettingsMenu,
   SettingsForm,
 } from "../../components/Settings/settingsHelpers";
-import { Image, Socials, Input } from "../../components/Modals/ModalHelpers";
+import {
+  Image,
+  SocialsInputs,
+  Input,
+} from "../../components/Modals/ModalHelpers";
 import {
   useForm,
   apiRoutes,
@@ -15,7 +19,8 @@ import {
 
 export default function SettingsPage() {
   const { user } = useAuth();
-  const [postData, { loading, message, errors }] = useRequest();
+  const [postData, { loading, message, errors, Message }] = useRequest();
+  console.log(loading, message, errors);
   const form = useForm({
     test: true,
     onSubmit: (formData) => {
@@ -38,20 +43,22 @@ export default function SettingsPage() {
                 <label>Current Avatar:</label>
                 <img src={STORAGE_URL + user.profile.avatar} />
               </div>
-              <Image name="avatar" label="Avatar" />
+              <Image errors={errors} name="avatar" label="Avatar" />
               <div className="form-group image-preview">
                 <label>Current Banner:</label>
                 <img src={STORAGE_URL + user.profile.banner} />
               </div>
-              <Image name="banner" label="Banner" />
+              <Image errors={errors} name="banner" label="Banner" />
               <Input
+                errors={errors}
                 textarea
+                value={user.profile.description}
                 name="description"
                 label="Description"
                 placeholder="Tell us something about you"
               />
-              <Socials />
-              <form.Message />
+              <SocialsInputs errors={errors} />
+              <Message />
               <div className="form-group">
                 <button className="btn" type="submit">
                   Save

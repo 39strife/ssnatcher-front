@@ -3,11 +3,15 @@ import { makeClasses, formatBytes } from "../../lib/helpers";
 import { useFiles } from "../../lib/hooks/useFiles";
 import { sentenceCase } from "change-case";
 import { ExitIcon } from "../../styles/icons";
+import { useAuth } from "../../lib/globals/AuthContext";
 const SocialTypes = ["instagram", "facebook", "twitch", "steam", "discord"];
 
-export const Socials = () => {
+export const SocialsInputs = () => {
+  const { user } = useAuth();
   const [socials, setSocials] = useState(
-    SocialTypes.map((e) => ({ name: e, value: "" }))
+    user?.profile?.socials
+      ? user.profile.socials
+      : SocialTypes.map((e) => ({ name: e, value: "" }))
   );
   return (
     <div className="socials-editable row">

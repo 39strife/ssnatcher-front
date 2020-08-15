@@ -5,8 +5,13 @@ import CookieAlert from "../components/CookiePolicy";
 import { useRouter, Router } from "next/router";
 import { useEffect } from "react";
 import NProgress from "nprogress";
-import { AuthProvider, loginRest } from "../lib/globals/AuthContext";
+import {
+  AuthProvider,
+  loginRest,
+  AuthModals,
+} from "../lib/globals/AuthContext";
 import { ToastContainer } from "react-toastify";
+import AlertProvider from "../lib/Alerts/AlertProvider";
 
 Router.events.on("routeChangeStart", () => {
   NProgress.start();
@@ -23,12 +28,14 @@ Router.events.on("routeChangeError", () => {
 
 const Providers = ({ children, auth }) => {
   return (
-    <AuthProvider INITIAL_STATE={auth}>
-      <ModalProvider>
+    <ModalProvider>
+      <AuthProvider INITIAL_STATE={auth}>
+        <AlertProvider />
+        <AuthModals />
         <ToastContainer newestOnTop />
         {children}
-      </ModalProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </ModalProvider>
   );
 };
 

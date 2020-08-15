@@ -7,6 +7,7 @@ import { makeClasses, formEventTOJSON } from "../../lib/helpers";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth, useAuthActions } from "../../lib/globals/AuthContext";
+import { alert } from "../../lib/Alerts/alert";
 
 export default function Nav() {
   const { setLogin, setRegister } = useModalContext();
@@ -42,6 +43,14 @@ export default function Nav() {
               }}
             >
               <input
+                onClick={async () => {
+                  try {
+                    const x = await alert();
+                    console.log(x);
+                  } catch (e) {
+                    console.log(e);
+                  }
+                }}
                 name="search"
                 ref={searchRef}
                 onFocus={() => setFocus(true)}

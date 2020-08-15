@@ -1,0 +1,22 @@
+#Alertify-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  .alert {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    &-inner {
+      position: absolute;
+      top: 50%;
+      padding: 2rem;
+      min-width: 300px;
+      border: 1px solid rgba(white, 0.2);
+      background: black;
+      border-radius: 10px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
