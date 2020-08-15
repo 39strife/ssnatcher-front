@@ -6,14 +6,15 @@ import {
   SettingsForm,
 } from "../../components/Settings/settingsHelpers";
 import { Image, Socials } from "../../components/Modals/ModalHelpers";
-import { useForm } from "../../lib/hooks/useRequest";
+import { useForm, apiRoutes, useRequest } from "../../lib/hooks/useRequest";
 
 export default function SettingsPage() {
   const { user } = useAuth();
+  const [postData, { loading, message, errors }] = useRequest();
   const form = useForm({
     test: true,
-    onSubmit: (e) => {
-      e.forEach((e, i) => console.log(e, i));
+    onSubmit: (formData) => {
+      postData(apiRoutes.profile.update, formData);
     },
     formData: true,
   });
