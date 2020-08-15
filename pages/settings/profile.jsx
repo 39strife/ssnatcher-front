@@ -5,8 +5,13 @@ import {
   SettingsMenu,
   SettingsForm,
 } from "../../components/Settings/settingsHelpers";
-import { Image, Socials } from "../../components/Modals/ModalHelpers";
-import { useForm, apiRoutes, useRequest } from "../../lib/hooks/useRequest";
+import { Image, Socials, Input } from "../../components/Modals/ModalHelpers";
+import {
+  useForm,
+  apiRoutes,
+  useRequest,
+  STORAGE_URL,
+} from "../../lib/hooks/useRequest";
 
 export default function SettingsPage() {
   const { user } = useAuth();
@@ -29,8 +34,22 @@ export default function SettingsPage() {
             description="Let's get you looking clean 🧼"
           >
             <form onSubmit={form.handleSubmit}>
+              <div className="form-group image-preview">
+                <label>Current Avatar:</label>
+                <img src={STORAGE_URL + user.profile.avatar} />
+              </div>
               <Image name="avatar" label="Avatar" />
+              <div className="form-group image-preview">
+                <label>Current Banner:</label>
+                <img src={STORAGE_URL + user.profile.banner} />
+              </div>
               <Image name="banner" label="Banner" />
+              <Input
+                textarea
+                name="description"
+                label="Description"
+                placeholder="Tell us something about you"
+              />
               <Socials />
               <form.Message />
               <div className="form-group">

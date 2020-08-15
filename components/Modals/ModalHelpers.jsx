@@ -10,11 +10,11 @@ export const Socials = () => {
     SocialTypes.map((e) => ({ name: e, value: "" }))
   );
   return (
-    <div className="socials">
+    <div className="socials-editable row">
       <input type="hidden" name="socials" value={JSON.stringify(socials)} />
       {socials.map((social, i) => {
         return (
-          <div key={social.name + i} className="form-group">
+          <div key={social.name + i} className="form-group col-md-6">
             <label htmlFor={social.name}>{sentenceCase(social.name)}</label>
             <input
               onChange={(x) => {
@@ -130,6 +130,7 @@ export const Image = ({ name, label }) => {
 
 export const Input = ({
   errors = {},
+  textarea = false,
   name = "",
   placeholder = "",
   type = "text",
@@ -148,15 +149,28 @@ export const Input = ({
   return (
     <div className={makeClasses("form-group", hasError && "has-error")}>
       <label htmlFor={name}>{label}</label>
-      <input
-        defaultValue={value}
-        autoComplete="off"
-        id={name}
-        type={type}
-        readOnly={readOnly ? "readonly" : false}
-        name={name}
-        placeholder={placeholder}
-      />
+      {textarea ? (
+        <textarea
+          defaultValue={value}
+          autoComplete="off"
+          id={name}
+          type={type}
+          readOnly={readOnly ? "readonly" : false}
+          name={name}
+          placeholder={placeholder}
+        />
+      ) : (
+        <input
+          defaultValue={value}
+          autoComplete="off"
+          id={name}
+          type={type}
+          readOnly={readOnly ? "readonly" : false}
+          name={name}
+          placeholder={placeholder}
+        />
+      )}
+
       {hasError && (
         <div className="alert-error">
           {error.map((e, i) => (

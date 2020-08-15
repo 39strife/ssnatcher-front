@@ -50,6 +50,18 @@
   display: flex;
   flex-flow: column wrap;
   margin-bottom: 2rem;
+  &.image-preview {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    align-items: center;
+    img {
+      max-width: 100%;
+      height: auto;
+      max-height: 200px;
+      margin-left: auto;
+      border-radius: $borderRadius;
+    }
+  }
   &.has-error {
     .checkbox-custom {
       border: 1px solid $darkRed;
@@ -79,7 +91,8 @@
       user-select: none;
     }
   }
-  input {
+  input,
+  textarea {
     background: rgba($white, 0.05);
     outline: none;
     border: 0;
@@ -89,6 +102,8 @@
     transition: transition((box-shadow));
     color: white;
     width: 100%;
+    font-family: "Poppins";
+    font-size: 1rem;
     font-weight: 400;
     &:focus {
       box-shadow: 0 0 0 1px rgba($blue, 1);
@@ -96,6 +111,9 @@
     &::placeholder {
       color: rgba(white, 0.5);
     }
+  }
+  textarea {
+    min-height: 200px;
   }
   label {
     margin-bottom: 0.5rem;
