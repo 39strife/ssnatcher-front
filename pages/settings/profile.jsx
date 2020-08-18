@@ -20,7 +20,6 @@ import {
 export default function SettingsPage() {
   const { user } = useAuth();
   const [postData, { loading, message, errors, Message }] = useRequest();
-  console.log(loading, message, errors);
   const form = useForm({
     test: true,
     onSubmit: (formData) => {
@@ -39,16 +38,18 @@ export default function SettingsPage() {
             description="Let's get you looking clean 🧼"
           >
             <form onSubmit={form.handleSubmit}>
-              <div className="form-group image-preview">
-                <label>Current Avatar:</label>
-                <img src={STORAGE_URL + user.profile.avatar} />
-              </div>
-              <Image errors={errors} name="avatar" label="Avatar" />
-              <div className="form-group image-preview">
-                <label>Current Banner:</label>
-                <img src={STORAGE_URL + user.profile.banner} />
-              </div>
-              <Image errors={errors} name="banner" label="Banner" />
+              <Image
+                errors={errors}
+                name="avatar"
+                label="Avatar"
+                value={user.profile.avatar}
+              />
+              <Image
+                errors={errors}
+                name="banner"
+                label="Banner"
+                value={user.profile.banner}
+              />
               <Input
                 errors={errors}
                 textarea

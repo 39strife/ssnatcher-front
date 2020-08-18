@@ -46,10 +46,7 @@ export default function Nav() {
                 onClick={async () => {
                   try {
                     const x = await alert();
-                    console.log(x);
-                  } catch (e) {
-                    console.log(e);
-                  }
+                  } catch (e) {}
                 }}
                 name="search"
                 ref={searchRef}
