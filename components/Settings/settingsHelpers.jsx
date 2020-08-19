@@ -10,14 +10,14 @@ export const SettingsMenu = () => {
         <li onClick={() => router.push("/settings/profile")}>Profile</li>
         <li
           onClick={() =>
-            router.push("/settings/new/[slug]", "/settings/new/combo")
+            router.push("/settings/new/[new]", "/settings/new/combo")
           }
         >
           New Combo
         </li>
         <li
           onClick={() =>
-            router.push("/settings/new/[slug]", "/settings/new/post")
+            router.push("/settings/new/[new]", "/settings/new/post")
           }
         >
           New Post

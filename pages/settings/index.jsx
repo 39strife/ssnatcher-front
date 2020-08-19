@@ -5,7 +5,6 @@ import SettingsLayout from "../../components/Settings/SettingsLayout";
 
 export default function SettingsPage() {
   const { user } = useAuth();
-  console.log(user);
   return (
     <SettingsLayout
       title="Settings"

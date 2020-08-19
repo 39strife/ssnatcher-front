@@ -75,6 +75,16 @@ export default function Nav() {
                         href: "/settings",
                       },
                       {
+                        label: "New Combo",
+                        href: "/settings/new/[new]",
+                        as: "/settings/new/combo",
+                      },
+                      {
+                        label: "New Post",
+                        href: "/settings/new/[new]",
+                        as: "/settings/new/post",
+                      },
+                      {
                         label: "Log Out",
                         props: {
                           onClick: () => logout(),

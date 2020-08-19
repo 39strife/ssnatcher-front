@@ -10,11 +10,12 @@ export const ComboParser = ({ combo }) => {
   if (!combo) {
     return null;
   }
-  console.log(combo.trim().split(" ").filter(Boolean));
   return (
     <div className="combo-parser">
       {combo
         .trim()
+        .split(",")
+        .join(" , ")
         .split(" ")
         .filter(Boolean)
         .map((e, i) => {
@@ -125,7 +126,6 @@ const ComboGrid = ({ onChange }) => {
   const [type, setType] = useState("all");
   const [comboArray, setArray] = useState([]);
   useEffect(() => {
-    console.log(comboArray);
     if (typeof onChange === "function") {
       onChange(comboArray.join(" "));
     }
@@ -143,7 +143,6 @@ const ComboGrid = ({ onChange }) => {
             onClick={() =>
               setArray((arr) =>
                 arr.filter((e, i) => {
-                  console.log(i - 1 !== arr.length);
                   return i + 1 !== arr.length;
                 })
               )
@@ -197,7 +196,6 @@ export const ComboMaker = ({
   })();
   const [innerValue, setValue] = useState(value);
   const [comboType, setType] = useState("text");
-  console.log(comboType);
   const hasError = Boolean(error.length);
   return (
     <>

@@ -225,7 +225,6 @@ export const Select = ({
   options = [],
   placeholder = "",
 }) => {
-  console.log(options);
   if (!options.length) {
     return <></>;
   }
@@ -275,9 +274,7 @@ export const Consent = ({ errors }) => {
       <label htmlFor="consent" className="checkbox">
         <input
           type="checkbox"
-          onChange={(e) => {
-            console.log(e.target.checked);
-          }}
+          onChange={(e) => {}}
           value={true}
           name="consent"
           id="consent"

@@ -183,6 +183,7 @@ nav {
     backdrop-filter: $blur;
     border-radius: $borderRadius;
     overflow: hidden;
+    width: max-content;
     li {
       width: 100%;
       &:not(:last-child) {

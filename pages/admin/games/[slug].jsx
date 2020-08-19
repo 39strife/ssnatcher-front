@@ -3,13 +3,11 @@ import AdminLayout from "../../../lib/AdminLayout";
 import { getData, apiRoutes, useForm } from "../../../lib/hooks/useRequest";
 import { Input, Image } from "../../../components/Modals/ModalHelpers";
 
-export default function singleCharacter({ game }) {
-  console.log(game);
+export default function singleGame({ game }) {
   const form = useForm({
     formData: true,
     endpoint: apiRoutes.games.single(game.slug),
   });
-  console.log(game);
   return (
     <AdminLayout>
       <form onSubmit={form.handleSubmit}>

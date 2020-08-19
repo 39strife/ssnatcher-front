@@ -3,9 +3,14 @@ import { Input, Image, Select } from "../../../components/Modals/ModalHelpers";
 import ReactMde from "react-mde";
 
 import * as Showdown from "showdown";
-import { formEventTOJSON, transformToSelects } from "../../../lib/helpers";
-import { getGames, getCharactersByGame } from "../../../lib/requests";
+import { formEventTOData } from "../../../lib/helpers";
 import { ComboMaker } from "../../../components/ComboParser";
+import {
+  useGames,
+  useCharacters,
+  useProperties,
+} from "../../../lib/hooks/useProperties";
+import { useRequest, apiRoutes } from "../../../lib/hooks/useRequest";
 
 const converter = new Showdown.Converter({
   tables: true,
@@ -67,34 +72,51 @@ export const NewComponents = {
       description: "Let's GOOOOOOOOOOOOOOOO 😠",
     },
     Inner: () => {
-      const [characters, setCharacters] = useState([]);
-      const [games, setGames] = useState([]);
-      useEffect(() => {
-        getGames().then((e) => setGames(transformToSelects(e)));
-      }, []);
+      const games = useGames({ options: true });
+      const [game, setGame] = useState("");
+      const characters = useCharacters({ options: true, game });
+      const properties = useProperties();
+      const [submitData, { loading, Message, errors }] = useRequest();
+      console.log(properties);
       return (
-        <form onSubmit={(e) => console.log(formEventTOJSON(e))}>
-          <Input name="title" label="Title" />
-          <Image name="image" label="Image" />
+        <form
+          onSubmit={(e) => {
+            const data = formEventTOData(e);
+            submitData(apiRoutes.combos.new, data);
+          }}
+        >
+          <Input errors={errors} name="name" label="Title" />
+          <Image errors={errors} name="image" label="Image" />
           <Select
+            errors={errors}
+            name="game"
             label="Game"
             placeholder="Select a game"
-            onChange={(e) =>
-              getCharactersByGame(e.target.value).then((e) =>
-                setCharacters(transformToSelects(e))
-              )
-            }
+            onChange={(e) => setGame(e.target.value)}
             options={games}
           />
           <Select
+            errors={errors}
+            name="character"
             label="Character"
             placeholder="Select a character"
             options={characters}
           />
-          <ComboMaker name="combo" label="Combo" />
-          <MarkdownEditor name="content" />
+          <ComboMaker errors={errors} name="combo" label="Combo" />
+          {properties.map((singleProperty, i) => {
+            return (
+              <Input
+                errors={errors}
+                key={`property[${singleProperty.id}]`}
+                name={`property[${singleProperty.id}]`}
+                label={singleProperty.name}
+              />
+            );
+          })}
+          <MarkdownEditor errors={errors} name="content" />
+          <Message />
           <div className="form-group">
-            <button type="submit" className="btn">
+            <button disabled={loading} type="submit" className="btn">
               Save
             </button>
           </div>

@@ -54,14 +54,13 @@ export default function useGamepad({ onChange = () => {} }) {
           if (string.current.length) {
             string.current = [];
             onChange(string.current);
-            console.log(string.current);
           }
           return;
         }
         if (string.current[string.current.length - 1] !== buttonName) {
           string.current.push(buttonName);
           onChange(string.current);
-          console.log(string.current);
+          return;
         }
       }
     });
