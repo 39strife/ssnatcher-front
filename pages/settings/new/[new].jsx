@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SettingsLayout from "../../../components/Settings/SettingsLayout";
-import { NewComponents } from "./NewComponents";
+import { NewComponents } from "../../../components/NewComponents/NewComponents";
 
 export default function NewSomething({ new: newVar }) {
   const InnerComponent = NewComponents[newVar].Inner;

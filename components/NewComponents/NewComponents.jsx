@@ -1,16 +1,16 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { Input, Image, Select } from "../../../components/Modals/ModalHelpers";
+import { Input, Image, Select } from "../Modals/ModalHelpers";
 import ReactMde from "react-mde";
 
 import * as Showdown from "showdown";
-import { formEventTOData } from "../../../lib/helpers";
-import { ComboMaker } from "../../../components/ComboParser";
+import { formEventTOData } from "../../lib/helpers";
+import { ComboMaker } from "../ComboParser";
 import {
   useGames,
   useCharacters,
   useProperties,
-} from "../../../lib/hooks/useProperties";
-import { useRequest, apiRoutes } from "../../../lib/hooks/useRequest";
+} from "../../lib/hooks/useProperties";
+import { useRequest, apiRoutes } from "../../lib/hooks/useRequest";
 
 const converter = new Showdown.Converter({
   tables: true,
