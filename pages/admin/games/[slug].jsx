@@ -41,7 +41,7 @@ export default function singleGame({ game }) {
   );
 }
 
-singleCharacter.getInitialProps = async (ctx) => {
+singleGame.getInitialProps = async (ctx) => {
   return {
     game: await getData(apiRoutes.games.single(ctx.query.slug), ctx),
   };
