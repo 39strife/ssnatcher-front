@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth, useAuthActions } from "../../lib/globals/AuthContext";
 import { alert } from "../../lib/Alerts/alert";
+import { STORAGE_URL } from "../../lib/hooks/useRequest";
 
 export default function Nav() {
   const { setLogin, setRegister } = useModalContext();
@@ -108,7 +109,14 @@ export default function Nav() {
               }
             >
               {(props) => {
-                return (
+                return isAuthenticated ? (
+                  <button {...props} className="nav-avatar_wrapper">
+                    <img
+                      src={STORAGE_URL + user.profile.avatar}
+                      className="nav-avatar"
+                    />{" "}
+                  </button>
+                ) : (
                   <button {...props}>
                     <Profile />
                   </button>

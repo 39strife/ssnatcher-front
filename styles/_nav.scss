@@ -30,6 +30,16 @@ nav {
   @include align-center-flex;
   justify-content: space-between;
   padding: 1rem;
+  &-avatar {
+    width: calc(25px + 1rem);
+    height: calc(25px + 1rem);
+    object-fit: cover;
+    &_wrapper {
+      padding: 0 !important;
+      border-radius: $borderRadius;
+      overflow: hidden;
+    }
+  }
   .sides {
     @include align-center-flex;
     @include for-phone {

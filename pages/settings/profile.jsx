@@ -1,20 +1,28 @@
 import React from "react";
-import { useAuth } from "../../lib/globals/AuthContext";
+import { useAuth, useAuthActions } from "../../lib/globals/AuthContext";
 import {
   Image,
   SocialsInputs,
   Input,
 } from "../../components/Modals/ModalHelpers";
-import { useForm, apiRoutes, useRequest } from "../../lib/hooks/useRequest";
+import {
+  useForm,
+  apiRoutes,
+  useRequest,
+  getData,
+} from "../../lib/hooks/useRequest";
 import SettingsLayout from "../../components/Settings/SettingsLayout";
 
 export default function SettingsPage() {
   const { user } = useAuth();
+  const { update } = useAuthActions();
   const [postData, { loading, message, errors, Message }] = useRequest();
   const form = useForm({
     test: true,
-    onSubmit: (formData) => {
-      postData(apiRoutes.profile.update, formData);
+    onSubmit: async (formData) => {
+      await postData(apiRoutes.profile.update, formData);
+      const user = await getData(apiRoutes.profile.me);
+      update(user);
     },
     formData: true,
   });
