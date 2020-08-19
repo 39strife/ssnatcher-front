@@ -5,6 +5,7 @@ import ReactMde from "react-mde";
 import * as Showdown from "showdown";
 import { formEventTOJSON, transformToSelects } from "../../../lib/helpers";
 import { getGames, getCharactersByGame } from "../../../lib/requests";
+import { ComboMaker } from "../../../components/ComboParser";
 
 const converter = new Showdown.Converter({
   tables: true,
@@ -90,6 +91,7 @@ export const NewComponents = {
             placeholder="Select a character"
             options={characters}
           />
+          <ComboMaker name="combo" label="Combo" />
           <MarkdownEditor name="content" />
           <div className="form-group">
             <button type="submit" className="btn">

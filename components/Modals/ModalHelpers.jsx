@@ -204,9 +204,10 @@ export const Input = ({
 
       {hasError && (
         <div className="alert-error">
-          {error.map((e, i) => (
-            <p key={name + i + "error"}>{e}</p>
-          ))}
+          {error.map((e, i) => {
+            const replacements = e.includes("/") ? e.replace("/") : e;
+            return <p key={name + i + "error"}>{replacements}</p>;
+          })}
         </div>
       )}
     </div>
@@ -247,8 +248,9 @@ export const Select = ({
         type={type}
         readOnly={readOnly ? "readonly" : false}
         name={name}
+        defaultValue=""
       >
-        <option selected>{placeholder}</option>
+        <option>{placeholder}</option>
         {options.map((e, i) => {
           return <option key={e.value + i}>{e.label}</option>;
         })}

@@ -50,6 +50,19 @@
   display: flex;
   flex-flow: column wrap;
   margin-bottom: 2rem;
+  .note {
+    padding: 0.5rem;
+  }
+  .checkbox-wrapper {
+    display: grid;
+    align-items: center;
+    grid-template-columns: calc(20px + 2rem) 1fr;
+  }
+  .way-combo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 2rem;
+  }
   &.image-preview {
     display: grid;
     grid-template-columns: 3fr 7fr;
@@ -132,11 +145,14 @@
 }
 
 .checkbox {
-  input[type="checkbox"] {
+  input[type="checkbox"],
+  input[type="radio"] {
     display: none;
   }
   input[type="checkbox"]:checked ~ .checkbox-custom,
-  input[type="checkbox"][checked] ~ .checkbox-custom {
+  input[type="checkbox"][checked] ~ .checkbox-custom,
+  input[type="radio"]:checked ~ .checkbox-custom,
+  input[type="radio"][checked] ~ .checkbox-custom {
     background: $blue;
     border: 1px solid $blue;
 
@@ -235,6 +251,76 @@
           border: 1px solid rgba($white, 0.2);
         }
       }
+    }
+  }
+}
+
+.combo-parser {
+  margin: 2rem 0;
+  min-height: 140px;
+  padding: 2rem 0;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  * {
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+  }
+  .next {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    height: 15px;
+  }
+  .tooltip {
+    background: $blue;
+    padding: 0.2rem 0.5rem;
+    border-radius: $borderRadius;
+    margin-bottom: 2rem;
+  }
+  img {
+    margin-bottom: 2rem;
+  }
+}
+
+.combo-grid {
+  &_header {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba($white, 0.1);
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      li {
+        user-select: none;
+        cursor: pointer;
+        margin-right: 1rem;
+        display: flex;
+        padding: 1rem;
+        &.active,
+        &:hover {
+          background: rgba($white, 0.1);
+        }
+      }
+    }
+  }
+  &_icons {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+    justify-content: center;
+    .single-icon {
+      cursor: pointer;
+      padding: 1rem;
+      &.active,
+      &:hover {
+        background: rgba($white, 0.1);
+      }
+    }
+    img {
+      margin: 0 auto;
+      display: block;
     }
   }
 }
