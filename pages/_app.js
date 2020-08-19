@@ -1,9 +1,9 @@
+import "react-mde/lib/styles/scss/react-mde-all.scss";
 import "react-toastify/scss/main.scss";
 import "../styles/index.scss";
 import { ModalProvider } from "../lib/globals/ModalContext";
 import CookieAlert from "../components/CookiePolicy";
-import { useRouter, Router } from "next/router";
-import { useEffect } from "react";
+import { Router } from "next/router";
 import NProgress from "nprogress";
 import {
   AuthProvider,

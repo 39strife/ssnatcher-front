@@ -8,13 +8,27 @@ export const SettingsMenu = () => {
       <ul className="settings-menu">
         <li onClick={() => router.push("/settings")}>Account</li>
         <li onClick={() => router.push("/settings/profile")}>Profile</li>
+        <li
+          onClick={() =>
+            router.push("/settings/new/[slug]", "/settings/new/combo")
+          }
+        >
+          New Combo
+        </li>
+        <li
+          onClick={() =>
+            router.push("/settings/new/[slug]", "/settings/new/post")
+          }
+        >
+          New Post
+        </li>
       </ul>
     </div>
   );
 };
 
 export const SettingsForm = ({ children, title, description }) => (
-  <div className="col-md-7 offset-md-2">
+  <div className="col-md-8 offset-md-1">
     <div className="row">
       <div className="col-md-12">
         <h1>{title}</h1>

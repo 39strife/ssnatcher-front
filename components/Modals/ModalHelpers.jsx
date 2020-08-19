@@ -213,6 +213,58 @@ export const Input = ({
   );
 };
 
+export const Select = ({
+  errors = {},
+  name = "",
+  type = "text",
+  label = "",
+  readOnly = false,
+  value = "",
+  onChange = () => {},
+  options = [],
+  placeholder = "",
+}) => {
+  console.log(options);
+  if (!options.length) {
+    return <></>;
+  }
+  let error = (() => {
+    try {
+      return errors[name] || [];
+    } catch {
+      return [];
+    }
+  })();
+  const hasError = Boolean(error.length);
+  return (
+    <div className={makeClasses("form-group", hasError && "has-error")}>
+      <label htmlFor={name}>{label}</label>
+      <select
+        onChange={onChange}
+        defaultValue={value}
+        autoComplete="off"
+        id={name}
+        type={type}
+        readOnly={readOnly ? "readonly" : false}
+        name={name}
+      >
+        <option selected>{placeholder}</option>
+        {options.map((e, i) => {
+          return <option key={e.value + i}>{e.label}</option>;
+        })}
+      </select>
+
+      {hasError && (
+        <div className="alert-error">
+          {error.map((e, i) => (
+            <p key={name + i + "error"}>{e}</p>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 export const Consent = ({ errors }) => {
   const error = errors["consent"] || [];
   const hasError = Boolean(error.length);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import xbox from "./layouts/xbox";
 
-export default function useGamepad() {
+export default function useGamepad({ onChange = () => {} }) {
   const gamepad = useRef(0);
   const padState = useRef({
     buttons: {
@@ -53,12 +53,14 @@ export default function useGamepad() {
         if (buttonName === "Back") {
           if (string.current.length) {
             string.current = [];
+            onChange(string.current);
             console.log(string.current);
           }
           return;
         }
         if (string.current[string.current.length - 1] !== buttonName) {
           string.current.push(buttonName);
+          onChange(string.current);
           console.log(string.current);
         }
       }

@@ -67,7 +67,8 @@
       border: 1px solid $darkRed;
     }
     input,
-    textarea {
+    textarea,
+    select {
       border: 1px solid $darkRed;
     }
   }
@@ -92,8 +93,16 @@
       user-select: none;
     }
   }
+  select {
+    -webkit-appearance: none;
+    option {
+      background: rgba($dark, 1);
+      padding: 1rem;
+    }
+  }
   input,
-  textarea {
+  textarea,
+  select {
     background: rgba($white, 0.05);
     outline: none;
     border: 0;
@@ -190,6 +199,42 @@
     img {
       max-width: 100%;
       height: auto;
+    }
+  }
+}
+
+.react-mde {
+  border: 0;
+  .svg-icon {
+    path {
+      fill: white;
+    }
+  }
+  .mde-text {
+    outline: none;
+    background: $dark;
+    color: white;
+    font-family: "Poppins";
+  }
+  .grip {
+    background: rgba(white, 0.1);
+    border: 0;
+  }
+  .mde-header {
+    background: $dark;
+    align-items: center;
+    border: 0;
+    .mde-tabs {
+      button {
+        color: white;
+        border-radius: 10px;
+        padding: 0.5rem 1rem;
+
+        &.selected {
+          background: rgba($white, 0.1);
+          border: 1px solid rgba($white, 0.2);
+        }
+      }
     }
   }
 }

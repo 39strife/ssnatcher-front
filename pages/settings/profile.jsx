@@ -1,21 +1,12 @@
 import React from "react";
-import Layout from "../../lib/Layout";
-import { ProtectedRoute, useAuth } from "../../lib/globals/AuthContext";
-import {
-  SettingsMenu,
-  SettingsForm,
-} from "../../components/Settings/settingsHelpers";
+import { useAuth } from "../../lib/globals/AuthContext";
 import {
   Image,
   SocialsInputs,
   Input,
 } from "../../components/Modals/ModalHelpers";
-import {
-  useForm,
-  apiRoutes,
-  useRequest,
-  STORAGE_URL,
-} from "../../lib/hooks/useRequest";
+import { useForm, apiRoutes, useRequest } from "../../lib/hooks/useRequest";
+import SettingsLayout from "../../components/Settings/SettingsLayout";
 
 export default function SettingsPage() {
   const { user } = useAuth();
@@ -28,47 +19,39 @@ export default function SettingsPage() {
     formData: true,
   });
   return (
-    <Layout>
-      <ProtectedRoute />
-      <div className="wrapper p-t-10">
-        <div className="row">
-          <SettingsMenu />
-          <SettingsForm
-            title="Profile"
-            description="Let's get you looking clean 🧼"
-          >
-            <form onSubmit={form.handleSubmit}>
-              <Image
-                errors={errors}
-                name="avatar"
-                label="Avatar"
-                value={user.profile.avatar}
-              />
-              <Image
-                errors={errors}
-                name="banner"
-                label="Banner"
-                value={user.profile.banner}
-              />
-              <Input
-                errors={errors}
-                textarea
-                value={user.profile.description}
-                name="description"
-                label="Description"
-                placeholder="Tell us something about you"
-              />
-              <SocialsInputs errors={errors} />
-              <Message />
-              <div className="form-group">
-                <button className="btn" type="submit">
-                  Save
-                </button>
-              </div>
-            </form>
-          </SettingsForm>
+    <SettingsLayout
+      title="Profile"
+      description="Let's get you looking clean 🧼"
+    >
+      <form onSubmit={form.handleSubmit}>
+        <Image
+          errors={errors}
+          name="avatar"
+          label="Avatar"
+          value={user.profile.avatar}
+        />
+        <Image
+          errors={errors}
+          name="banner"
+          label="Banner"
+          value={user.profile.banner}
+        />
+        <Input
+          errors={errors}
+          textarea
+          value={user.profile.description}
+          name="description"
+          label="Description"
+          placeholder="Tell us something about you"
+        />
+        <SocialsInputs errors={errors} />
+        <Message />
+        <div className="form-group">
+          <button className="btn" type="submit">
+            Save
+          </button>
         </div>
-      </div>
-    </Layout>
+      </form>
+    </SettingsLayout>
   );
 }
