@@ -53,7 +53,7 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
     typeof Component.getInitialProps === "function"
       ? await Component.getInitialProps(ctx)
       : {};
-  const auth = await loginRest(ctx);
+  const auth = process.browser ? {} : await loginRest(ctx);
 
   return { pageProps, auth };
 };

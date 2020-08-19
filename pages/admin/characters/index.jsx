@@ -35,7 +35,7 @@ export default function characterPanel({ characters }) {
               }
               className="col-md-4 cursor-pointer admin-character"
             >
-              <img src={STORAGE_URL + image} />
+              <img src={image} />
               <h3>{name}</h3>
               <p>{description}</p>
             </div>

@@ -111,10 +111,7 @@ export default function Nav() {
               {(props) => {
                 return isAuthenticated ? (
                   <button {...props} className="nav-avatar_wrapper">
-                    <img
-                      src={STORAGE_URL + user.profile.avatar}
-                      className="nav-avatar"
-                    />{" "}
+                    <img src={user.profile.avatar} className="nav-avatar" />{" "}
                   </button>
                 ) : (
                   <button {...props}>

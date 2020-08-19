@@ -59,7 +59,7 @@ export const Image = ({ name, label, value, errors = {} }) => {
       {Boolean(value) && (
         <div className="form-group image-preview">
           <label>Current {label}:</label>
-          <img src={STORAGE_URL + value} />
+          <img src={value} />
         </div>
       )}
       <div className="form-group">

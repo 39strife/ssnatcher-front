@@ -8,13 +8,13 @@ export default function SingleProfile({ user }) {
       <div className="profile-page">
         <div className="profile-page-banner">
           <div className="profile-page-banner_overlay"></div>
-          <img src={STORAGE_URL + user.profile.banner} />
+          <img src={user.profile.banner} />
         </div>
         <div className="wrapper">
           <div className="profile-page-header">
             <div className="row">
               <div className="col-md-4 avatar">
-                <img src={STORAGE_URL + user.profile.avatar} />
+                <img src={user.profile.avatar} />
               </div>
               <div className="col-md-8 description">
                 <div className="row align-center">
